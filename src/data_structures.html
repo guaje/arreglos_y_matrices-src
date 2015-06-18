@@ -1,0 +1,324 @@
+<section>
+	<section data-markdown>
+		## Introducción a las estructuras de datos
+	</section>
+
+	<section data-markdown>
+		## Estructuras de datos: Ejemplo en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+class Arreglo
+{
+	private:
+	    float* x;
+	    int l;
+	    float max;
+	    float min;
+
+	public:
+	    float* inicializar(int dim);
+	    int insertar(float val);
+	    int longitud();
+	    float maximo();
+	    float minimo();
+};
+```
+	</section>
+
+	<section data-markdown>
+		## Estructuras de datos: Ejemplo en C++
+
+```cpp
+float* Arreglo::inicializar(int dim)
+{
+	x = new float[dim];
+	for(int i = 0; i < dim; i++)
+	{
+	    x[i] = 0;
+	}
+	l = 0;
+	max = x[0];
+	min = x[0];
+	return x;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Estructuras de datos: Ejemplo en C++
+
+```cpp
+int Arreglo::insertar(float val)
+{
+	x[l] = val;
+	if(x[l] > max)
+	    max = x[l];
+	if(x[l] < min)
+	    min = x[l];
+	return l++;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Estructuras de datos: Ejemplo en C++
+
+```cpp
+int Arreglo::longitud()
+{
+	return l;
+}
+
+float Arreglo::maximo()
+{
+	return max;
+}
+
+float Arreglo::minimo()
+{
+	return min;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Estructuras de datos: Ejemplo en C++
+
+```cpp
+int main()
+{
+	Arreglo a;
+	float* x;
+	int p1;
+	int p2;
+	int l = 3;
+	
+	x = a.inicializar(l);
+	for(int i = 0; i < l; i++)
+	{
+	    cout << x[i] << endl;
+	}
+	
+	p1 = a.insertar(-0.15);
+	cout << endl << p1 << endl;
+	cout << a.longitud() << endl;
+	cout << a.maximo() << endl;
+	cout << a.minimo() << endl << endl;
+	
+	p2 = a.insertar(33);
+	cout << p2 << endl;
+	cout << a.longitud() << endl;
+	cout << a.maximo() << endl;
+	cout << a.minimo() << endl << endl;
+	
+	for(int i = 0; i < l; i++)
+	{
+	    cout << x[i] << endl;
+	}
+
+	return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Estructuras de datos en Python: Listas []
+
+		- Las listas son secuencias mutables, i.e., que su contenido puede cambiar.
+		- <!-- .element: class="fragment" -->
+		Generalmente son usadas para almacenar colecciones de objetos homogeneos.
+		- <!-- .element: class="fragment" -->
+		Al igual que el concepto de tipado dinámico empleado en la declaración de variables. En python, las listas también son manejadas de manera dinámica.
+		</script>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Listas []</h2>
+
+		<p>
+			Esto quiere decir que no es necesario fijar el tamaño de la lista al momento de su creación, así:
+		</p>
+
+		<p class="fragment">
+			$$x = []$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Listas []</h2>
+
+		<p>
+			Adicionalmente las listas poseen los siguientes métodos:
+		</p>
+
+		<ul>
+			<li class="fragment">
+				lista.<b>append(x)</b>: Agrega un elemento al final de la lista. Esto es equivalente a \(a[len(a):] = [x]\).
+			</li>
+			<li class="fragment">
+				lista.<b>extend(L)</b>: Extiende la lista agregando un conjunto de elementos o sublista a la lista dada. Esto es equivalente a \(a[len(a):] = L\).
+			</li>
+			<li class="fragment">
+				lista.<b>insert(i, x)</b>: Inserta el elemento \(x\) en la posición \(i\).
+			</li>
+			<li class="fragment">
+				lista.<b>remove(x)</b>: Remueve el primer elemento de la lista cuyo valor sea igual a \(x\). Lanza un error si el elemento no está en la lista.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Listas[]</h2>
+
+		<ul>
+			<li>
+				lista.<b>pop([i])</b>: Remueve y retorna el elemento de la posición \(i\). Si no se especifica un indice, i.e., a.pop(). Entonces se remueve y se retorna el último elemento. (Los paréntesis cuadrados alrededor de \(i\) en la firma del método denotan que ese argumento es opcional.)
+			</li>
+			<li class="fragment">
+				lista.<b>clear()</b>: Remueve todos los elementos de la lista.
+			</li>
+			<li class="fragment">
+				lista.<b>sort()</b>: Ordena los elementos de la lista.
+			</li>
+			<li class="fragment">
+				lista.<b>reverse()</b>: Invierte el orden de los elementos de la lista.
+			</li>
+			<li class="fragment">
+				lista.<b>copy()</b>: Retorna una copia de la lista.
+			</li>
+		</ul>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Estructuras de datos en Python: Tuplas ()
+
+		- Las tuplas son secuencias inmutables, i.e., que su contenido no puede cambiar.
+		- <!-- .element: class="fragment" -->
+		Generalmente son usadas para almacenar colecciones de objetos heterogeneos.
+		</script>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Secuencias</h2>
+
+		<ul>
+			<li>
+				x <b>in</b> s: Retorna <b>True</b> si un elemento de \(s\) es igual a \(x\). De lo contrario retorna <b>False</b>.
+			</li>
+			<li class="fragment">
+				x <b>not in</b> s: Retorna <b>False</b> si un elemento de \(s\) es igual a \(x\). De lo contrario retorna <b>True</b>.
+			</li>
+			<li class="fragment">
+				s <b>+</b> t: Ejecuta la concatenación de \(s\) y \(t\).
+			</li>
+			<li class="fragment">
+				s <b>*</b> n or n <b>*</b> s: Retorna una secuencia con \(n\) copias de la secuencia \(s\) concatenadas.
+			</li>
+			<li class="fragment">
+				s<b>[i]</b>: \(i\)-ésimo elemento de la secuencia \(s\), tomando como origen el indice \(0\).
+			</li>
+			<li class="fragment">
+				s<b>[i:j]</b>: Retorna la subsecuencia de elementos de \(s\) comprendidos entre los índices \(i\) y \(j\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Secuencias</h2>
+
+		<ul>
+			<li>
+				s<b>[i:j:k]</b>: Retorna la subsecuencia de elementos de \(s\) comprendidos entre los índices \(i\) y \(j\), haciendo un paso de \(k\).
+			</li>
+			<li class="fragment">
+				<b>len(s)</b>: Retorna la longitud de la secuencia \(s\).
+			</li>
+			<li class="fragment">
+				<b>min(s)</b>: Retorna el menor elemento de la secuencia \(s\).
+			</li>
+			<li class="fragment">
+				<b>max(s)</b>: Retorna el mayor elemento de la secuencia \(s\).
+			</li>
+			<li class="fragment">
+				s.<b>index(x)</b>: Retorna el índice de la primera ocurrencia de \(x\) en la secuencia \(s\). Lanza un error si el elemento no está en la secuencia.
+			</li>
+			<li class="fragment">
+				s.<b>count(x)</b>: Retorna el número de ocurrencias de \(x\) en la secuencia \(s\).
+			</li>
+		</ul>
+	</section>
+
+	<section data-markdown>
+		<script type="text/template">
+		## Estructuras de datos en Python: Conjuntos {}
+
+		- Un conjunto es una colección no ordenada de distintos elementos únicos.
+		- <!-- .element: class="fragment" -->
+		Usos conocidos incluyen las pruebas de membresía, eliminación de elementos duplicados en una secuencia y calculo de operaciones matemáticas como la intersección, unión, diferencia y diferencia simétrica.
+		</script>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Conjuntos {}</h2>
+
+		<p>
+			Las operaciones que provee la estructura conjunto son las siguientes:
+		</p>
+
+		<ul>
+			<li class="fragment">
+				<b>len(s)</b>: Retorna la cardinalidad de \(s\).
+			</li>
+			<li class="fragment">
+				x <b>in</b> s: Prueba la membresía de \(x\) en \(s\).
+			</li>
+			<li class="fragment">
+				x <b>not in</b> s: Prueba la no-membresía de \(x\) en \(s\).
+			</li>
+			<li class="fragment">
+				conjunto.<b>isdisjoint(other)</b>: Retorna <b>True</b> si el conjunto no tiene elementos en común con \(other\). En otras palabras, dos (\(2\)) conjuntos son disyuntos si y solo si su intersección es el conjunto vacio.
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Conjuntos {}</h2>
+
+		<ul>
+			<li>
+				conjunto.<b>issubset(other)</b>: Prueba que cada elemento en el conjunto también pertenece a \(other\).
+			</li>
+			<li class="fragment">
+				conjunto.<b>issuperset(other)</b>: Prueba que cada elemento de \(other\) también pertenece al conjunto.
+			</li>
+			<li class="fragment">
+				conjunto.<b>union(other, ...)</b>: Retorna un nuevo conjunto con los elementos del conjunto y de \(other\).
+			</li>
+			<li class="fragment">
+				conjunto.<b>intersection(other, ...)</b>: Retorna un nuevo conjunto con los elementos que tienen en común el conjunto y \(other\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Estructuras de datos en Python: Conjuntos{}</h2>
+
+		<ul>
+			<li>
+				conjunto.<b>difference(other, ...)</b>: Retorna un nuevo conjunto con los elementos que estan en el conjunto que no están en \(other\).
+			</li>
+			<li class="fragment">
+				conjunto.<b>symmetric_difference(other)</b>: Retorna un nuevo conjunto con los elementos que están en conjunto o que están en \(other\), pero no en ambos.
+			</li>
+			<li class="fragment">
+				conjunto.<b>copy()</b>: Retorna un nuevo conjunto con una copia de conjunto.
+			</li>
+		</ul>
+	</section>
+</section>

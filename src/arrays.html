@@ -1,0 +1,337 @@
+<section>
+	<section data-markdown>
+		## Arreglos
+	</section>
+
+	<section>
+		<h2>Arreglos: Construcción</h2>
+
+		<p>
+			Si se tiene un conjunto \(\mathbb{T}\) que representa un tipo de datos y un número \(n \in \mathbb{N}\), entonces se puede construir un vector de tamaño \(n\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Generalización</h2>
+		
+		<p>
+			A partir del producto generalizado de un conjunto \(\mathbb{T}\) se puede obtener el conjunto de los arreglos \(\mathbb{T}^∗\), el cual se define como la unión de todos los productos cartesianos del conjunto \(\mathbb{T}\), de la siguiente manera:
+		</p>
+
+		<p class="fragment">
+			\(\mathbb{T}^* = \underset{n \in \mathbb{N}}{\cup} \mathbb{T}^n\) y se llama el conjunto de todos los arreglos de tipo \(\mathbb{T}\).
+		</p>
+
+		<p class="fragment">
+			así, el conjunto de los arreglos del tipo de datos \(\mathbb{T}\) es una colección de variables del tipo de datos \(\mathbb{T}\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Nota</h2>
+
+		<p>
+			Para definir arreglos se utilizará la notación de memoria dinámica, es decir, si \(x \in \mathbb{T}^∗\) entonces el vector \(x\) se creará en tiempo de ejecución del programa.
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Creación en C++</h2>
+
+		<p>
+			Si se quiere expresar en C++ que \(x \in \mathbb{T}^∗\) esto se escribe como \(\mathbb{T}* x\); y para reservar el espacio de memoria para todo el arreglo de tipo \(\mathbb{T}\), esto se escribe como \(x = new \mathbb{T}[n]\).
+		</p>
+
+		<p class="fragment">
+			De donde, para crear un arreglo \(x\) de tamaño \(n\) y de tipo \(\mathbb{T}\) se utiliza la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$\mathbb{T}* x = new \mathbb{T}[n];$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Creación en Python</h2>
+
+		<p>
+			En el caso de Python los arreglos son tratados como cualquier variable. Por lo tanto, solo cobra sentido la reservación de espacio en memoria.
+		</p>
+
+		<p class="fragment">
+			Así, para crear un arreglo \(x\) de tamaño \(n\) se utiliza la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$x = [0] * n$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Inicialización
+
+		Un arreglo también puede ser creado asignando valores a los componentes.
+	</section>
+
+	<section>
+		<h2>Arreglos: Inicialización en C++</h2>
+
+		<p>
+			Si se quiere expresar en C++ el vector \(v = [2, 4, 55, -3, -6.99]\) esto se escribe como \(float~v[] = \{2, 4, 55, -3, -6.99\}\);
+		</p>
+
+		<p class="fragment">
+			De donde, podemos generalizar para crear arreglos de tipo \(\mathbb{T}\) mediante la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$\mathbb{T}~v[] = \{v_1, v_2, v_3, \dots, v_n\};$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Inicialización en Python</h2>
+
+		<p>
+			En el caso de Python podemos expresar el vector \(v = [2, 4, 55, -3, -6.99]\) como \(v = [2, 4, 55, -3, -6.99]\).
+		</p>
+
+		<p class="fragment">
+			Así, para inicializar un arreglo \(v\) podemos utilizar la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$v = [v_1, v_2, v_3, \dots, v_n]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Componentes</h2>
+
+		<ul>
+			<li>
+				En la gran mayoria de los lenguajes de programación la primera componente del arreglo está ubicada en la posición \(0\).
+			</li>
+			<li class="fragment">
+				Por lo tanto, para un arreglo de tamaño \(n\) se tiene que la última componente del arreglo estará ubicada en la posición \(n − 1\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Arreglos: Componentes</h2>
+
+		<p>
+			A partir de lo anterior se tiene que dado un arreglo \(x \in \mathbb{T}^∗\), para acceder a la variable almacenada en la componente \(i\) se utiliza la equivalencia:
+		</p>
+
+		<p class="fragment">
+			$$x_i \equiv x[i - 1]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Componentes</h2>
+
+		<ul>
+			<li>
+				Una excepción a lo anterior es el lenguaje MatLab, para el cual la primera componente del arreglo está ubicada en la posición \(1\).
+			</li>
+			<li class="fragment">
+				Por lo tanto,  para un arreglo de tamaño \(n\) se tiene que la última componente del arreglo estará ubicada en la posición \(n\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Arreglos: Componentes</h2>
+
+		<p>
+			Es decir, para acceder en MatLab a la variable almacenada en la componente \(i\) se utiliza la equivalencia:
+		</p>
+
+		<p class="fragment">
+			$$x_i \equiv x[i]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos: Consideración en C++</h2>
+
+		<p>
+			Al igual que con las variables, al crear un arreglo mediante la forma \(\mathbb{T}* x = new \mathbb{T}[n];\) el espacio en memoria contiene basura.
+		</p>
+
+		<p class="fragment">
+			Por lo tanto, es recomendable inicializar estos valores. Lo cual se puede hacer de la siguiente manera:
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Consideración en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int len = 3;
+	float* x = new float[len];
+	for(int i = 0; i < len; i++)
+	{
+	    x[i] = 0;
+	}
+
+	return 0;
+}
+```
+	</section>
+
+	<section>
+		<h2>Arreglos: Ejemplo</h2>
+
+		<p>
+			Dado un conjunto, calcular la cantidad de elementos que contiene.
+		</p>
+
+		<p>
+			Para resolver este problema podemos definir la siguiente función.
+		</p>
+
+		<p class="fragment">
+			$$longitud : \mathbb{R}^* \rightarrow \mathbb{Z}^+$$
+			$$(x) \rightarrow \sum_{i \in x} 1$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Ejemplo en Python
+
+```python
+def longitud(x):
+	r = 0
+	for i in x:
+	    r += 1
+	return r
+
+x = [0, 0]
+print(longitud(x))
+```
+	</section>
+
+	<section>
+		<h2>Arreglos: Ejemplo</h2>
+
+		<p>
+			Dado un conjunto de datos, calcular el promedio de estos.
+		</p>
+
+		<p class="fragment">
+			Se puede tomar el resultado de la función anterior para calcular el promedio de los elementos de un arreglo utilizando el siguiente modelo de función matemática:
+		</p>
+
+		<p class="fragment">
+			$$promedio : \mathbb{R}^* \rightarrow \mathbb{R}$$
+			$$(x) \rightarrow \frac{1}{longitud(x)}\sum_{i \in x} i$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Ejemplo en Python
+
+```python
+def longitud(x):
+	r = 0
+	for i in x:
+	    r += 1
+	return r
+
+def promedio(x):
+	l = longitud(x)
+	r = 0
+	for i in x:
+	    r += i
+	return r / l
+
+x = [1, 2, 3]
+print(promedio(x))
+```
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Ejemplo en Python
+
+```python
+def promedio(x):
+	l = len(x)
+	r = 0
+	for i in x:
+	    r += i
+	return r / l
+
+x = [1, 2, 3]
+print(promedio(x))
+```
+	</section>
+
+	<section>
+		<h2>Arreglos: Ejemplo</h2>
+
+		<p>
+			En el caso de C++ deberemos pasar como argumento la longitud del arreglo, así:
+		</p>
+
+		<p class="fragment">
+			$$promedio : \mathbb{R}^* \times \mathbb{Z}^+ \rightarrow \mathbb{R}$$
+			$$(x, l) \rightarrow \frac{1}{l}\sum_{i \in x} i$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos: Ejemplo en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+float promedio(float* x, int l)
+{
+	float r = 0;
+	for(int i = 0; i < l; i++)
+	{
+	    r += x[i];
+	}
+	return r / l;
+}
+
+int main()
+{
+	float x[] = {1, 2, 3};
+	cout << promedio(x, 3) << endl;
+
+	return 0;
+}
+```
+	</section>
+
+	<section>
+		<h2>Arreglos: Consideraciones</h2>
+
+		<ul>
+			<li>
+				En C++, en caso de que se quiera acceder a una componente mayor o igual al \(n\)-ésimo el valor retornado será lo que exista en ese momento en memoria.
+			</li>
+
+			<li class="fragment">
+				En Python, en caso de que se quiera acceder a una componente mayor o igual al \(n\)-ésimo el interprete arrojará un error que indica que ese índice esta fuera de los limites del arreglo.
+			</li>
+
+			<li class="fragment">
+				Si se quiere acceder a una componente menor a \(0\), ocurre algo similar a lo descrito anteriormente.
+			</li>
+		</ul>
+	</section>
+</section>

@@ -1,0 +1,231 @@
+<section>
+	<section data-markdown>
+		## Matrices
+	</section>
+
+	<section>
+		<h2>Matrices: Ejemplo</h2>
+
+		<p>
+			$$
+			X = \begin{bmatrix}
+			1 & 3 & 7 & -2 & 8 \\
+			9 & 11 & 5 & 6 & 4 \\
+			6 & -2 & -1 & 1 & 1 \\
+			\end{bmatrix}
+			$$
+		</p>
+
+		<p class="fragment">
+			La anterior tabla de elementos denotada por la expresión \(X\), es una matriz.
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Definición</h2>
+
+		<p>
+			Una matriz es un arreglo rectangular de objetos, los cuales pertenecen a un mismo conjunto.
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Definición</h2>
+
+		<p>
+			En general, una matriz \(X\) se puede denotar de la siguiente forma:
+
+			$$
+			X = \begin{bmatrix}
+			x_{11} & x_{12} & x_{13} & \cdots & x_{1(m - 1)} & x_{1m} \\
+			x_{21} & x_{22} & x_{23} & \cdots & x_{2(m - 1)} & x_{2m} \\
+			x_{31} & x_{32} & x_{33} & \cdots & x_{3(m - 1)} & x_{3m} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+			x_{(n - 1)1} & x_{(n - 1)2} & x_{(n - 1)3} & \cdots & x_{(n - 1)(m - 1)} & x_{(n - 1)m} \\
+			x_{n1} & x_{n2} & x_{n3} & \cdots & x_{n(m - 1)} & x_{nm} \\
+			\end{bmatrix}
+			$$
+		</p>
+
+		<p class="fragment">
+			donde la matriz está compuesta por \(n\) filas y \(m\) columnas, a esta matriz se le dice que es de tamaño \(n \times m\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Ejemplo</h2>
+
+		<p>
+			La siguiente matriz es una matriz de tamaño \(4 \times 5\).
+		</p>
+
+		<p class="fragment">
+			$$
+			X = \begin{bmatrix}
+			0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Componentes</h2>
+
+		<ul>
+			<li>
+				A los objetos de la matriz se les llaman <b>componentes</b> o <b>entradas</b> de la matriz.
+			</li>
+			<li class="fragment">
+				Para referirse a una componente en particular, a ésta se le dice que es la componente en la posición \((i, j)\).
+			</li>
+			<li>
+				<p class="fragment">
+					Esto significa que el objeto es la componente ubicada en la fila \(i\) y en el columna \(j\).
+				</p>
+				<p class="fragment">
+					El cual se denota por la expresión \(x_{ij}\).
+				</p>
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Matrices: Componentes</h2>
+
+		<p>
+			De lo anterior se tiene que:
+		</p>
+
+		<p class="fragment">
+			$$
+			X = \begin{bmatrix}
+			x_{11} & \cdots & x_{1j} & \cdots & x_{1m} \\
+			\vdots & \ddots & \vdots & \ddots & \vdots \\
+			x_{i1} & \cdots & \fbox{\(x_{ij}\)} & \cdots & x_{im} \\
+			\vdots & \ddots & \vdots & \ddots & \vdots \\
+			x_{n1} & \cdots & x_{nj} & \cdots & x_{nm} \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Ejemplo</h2>
+
+		<p>
+			Para la matriz,
+
+			$$
+			X = \begin{bmatrix}
+			2 & -1 \\
+			-\frac{1}{5} & \sqrt{2} \\
+			3.14 & \pi \\
+			\end{bmatrix}
+			$$
+
+			de tamaño \(3 \times 2\).
+		</p>
+
+		<p class="fragment">
+			Se tiene que sus componentes son:
+		</p>
+
+		<div style="float: left; width: 50%;">
+			<ul>
+				<li class="fragment">\(x_{11}\) = 2</li>
+				<li class="fragment">\(x_{21}\) = \(-\frac{1}{5}\)</li>
+				<li class="fragment">\(x_{31}\) = 3.14</li>
+			</ul>
+		</div>
+		<div style="float: right; width: 50%;">
+			<ul>
+				<li class="fragment">\(x_{12}\) = -1</li>
+				<li class="fragment">\(x_{22}\) = \(\sqrt{2}\)</li>
+				<li class="fragment">\(x_{32}\) = \(\pi\)</li>
+			</ul>
+		</div>
+	</section>
+
+	<section data-markdown>
+		## Matrices: Definiciones Alternativas
+
+		Una forma de entender la estructura interna de una matriz distinta a la definida previamente, es la de interpretarla como _un arreglo de arreglos_, esto es, verla como un arreglo cuyas componentes son a su vez otros arreglos; como se explica a continuación:
+	</section>
+
+	<section>
+		<h2>Matrices: Definición por Vectores Fila</h2>
+
+		<p>
+			Una matriz puede verse como un vector columna cuyas componentes son vectores fila, así una matriz es un vector de tamaño \(n \times 1\) cuyas componentes son vectores de tamaño \(1 \times m\).
+		</p>
+
+		<p class="fragment">
+			$$
+			X = \begin{bmatrix}
+			[x_{11} & x_{12} & x_{13} & \cdots & x_{1m}] \\
+			&& \vdots \\
+			[x_{i1} & x_{i2} & x_{i3} & \cdots & x_{im}] \\
+			&& \vdots \\
+			[x_{n1} & x_{n2} & x_{n3} & \cdots & x_{nm}] \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Definición por Vectores Columna</h2>
+
+		<p>
+			Una matriz puede verse como un vector fila cuyas componentes son vectores columna, así una matriz es un vector de tamaño \(1 \times m\) cuyas componentes son vectores de tamaño \(n \times 1\).
+		</p>
+
+		<p class="fragment">
+			$$
+			X = \begin{bmatrix}
+			\begin{bmatrix}
+			x_{11} \\ x_{21} \\ x_{31} \\ \vdots \\ x_{n1}
+			\end{bmatrix}
+			\cdots
+			\begin{bmatrix}
+			x_{1j} \\ x_{2j} \\ x_{3j} \\ \vdots \\ x_{nj}
+			\end{bmatrix}
+			\cdots
+			\begin{bmatrix}
+			x_{1m} \\ x_{2m} \\ x_{3m} \\ \vdots \\ x_{nm}
+			\end{bmatrix}
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Conjunto</h2>
+
+		<p>
+			A partir del concepto de arreglo y usando la definición de matrices por vectores fila se puede ahora definir el conjunto de las matrices \(\mathbb{T}^{∗∗}\) como la unión de todos los productos cartesianos del conjunto de los arreglos del conjunto \(\mathbb{T}\), de la siguiente manera:
+		</p>
+
+		<p class="fragment">
+			$$\mathbb{T}^{**} = \underset{n \in \mathbb{N}}{\cup} \left(\underset{m \in \mathbb{N}}{\cup} (\mathbb{T}^m)^T \right)^n$$
+		</p>
+
+		<p class="fragment">
+			El producto externo debe entenderse como un producto cartesiano que genera vectores columna y que internamente genera vectores fila, así como en la definición por vectores fila.
+		</p>
+	</section>
+
+	<section>
+		<h2>Matrices: Conjunto</h2>
+
+		<p>
+			Un elemento genérico del conjunto \(\mathbb{T}^{∗∗}\) es de la forma \(\left((\mathbb{T}^m)^T\right)^n\), donde \(n\) es el número de filas y \(m\) es el número de columnas. Para abreviar, de aquí en adelante se utilizará la notación:
+		</p>
+
+		<p class="fragment">
+			$$\left((\mathbb{T}^m)^T\right)^n \Leftrightarrow \mathbb{T}^{n \times m}$$
+		</p>
+	</section>
+</section>

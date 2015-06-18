@@ -1,0 +1,559 @@
+<section>
+	<section data-markdown>
+		## Arreglos Multidimensionales
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Construcción</h2>
+
+		<p>
+			Si se tiene un conjunto \(\mathbb{T}\) que representa un tipo de datos y los números \(n \in \mathbb{N}\) y \(m \in \mathbb{N}\), entonces se puede construir una matriz de tamaño \(n \times m\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Generalización</h2>
+		
+		<p>
+			A partir del producto generalizado de un conjunto \(\mathbb{T}\) se puede obtener el conjunto de las matrices \(\mathbb{T}^{**}\), el cual se define como la unión de todos los productos cartesianos del conjunto de los arreglos del conjunto \(\mathbb{T}\), de la siguiente manera:
+		</p>
+
+		<p class="fragment">
+			\(\mathbb{T}^{**} = \underset{n \in \mathbb{N}}{\cup} \left(\underset{m \in \mathbb{N}}{\cup} (\mathbb{T}^m)^T \right)^n\) y se llama el conjunto de todos los arreglos de tipo \((\mathbb{T}^m)^T\).
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Nota</h2>
+
+		<p>
+			De la misma manera que los arreglos, para definir arreglos multidimensionales se utilizará la notación de memoria dinámica, es decir, si \(x \in \mathbb{T}^{**}\) entonces la matriz \(X\) se creará en tiempo de ejecución del programa.
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Creación en C++</h2>
+
+		<p>
+			Si se quiere expresar en C++ que \(x \in \mathbb{T}^{**}\) esto se escribe como \(\mathbb{T}**~X\); y para reservar el espacio de memoria para todo el arreglo de tipo \(\mathbb{T}\), esto se escribe como \(X = new \mathbb{T}*[n]\). Seguido de las instrucciones \(for(int~i = 0; i < n; i++) X[i] = new \mathbb{T}[m];\)
+		</p>
+
+		<p class="fragment">
+			De donde, para crear un arreglo \(X\) de tamaño \(n \times m\) y de tipo \(\mathbb{T}\) se utilizan las instrucciones.
+		</p>
+
+		<p class="fragment">
+			$$\mathbb{T}**~X = new \mathbb{T}*[n];$$
+			$$for(int~i = 0; i < n; i++)$$
+			$$X[i] = new \mathbb{T}[m];$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Creación en Python</h2>
+
+		<p>
+			En el caso de Python las matrices son tratados como cualquier variable. Por lo tanto, solo cobra sentido la reservación de espacio en memoria.
+		</p>
+
+		<p class="fragment">
+			Así, para crear una matriz \(X\) de tamaño \(n \times m\) se utiliza la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$X = [[0] * m~for~i~in~range(n)]$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Inicialización
+
+		Una matriz también puede ser creada asignando valores a los componentes.
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Inicialización en C++</h2>
+
+		<p>
+			Si se quiere expresar en C++ la matriz
+		</p>
+
+		<p>
+			$$
+			X = \begin{bmatrix}
+			1 & 3 \\
+			9 & 11 \\
+			6 & -2 \\
+			\end{bmatrix}
+			$$
+		</p>
+			
+		<p class="fragment">
+			esto se escribe como \(int~X[3][2] = \{\{1, 3\}, \{9, 11\}, \{6, -2\}\}\);
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Inicialización en C++</h2>
+
+		<p>
+			De donde, podemos generalizar para crear matrices de tipo \(\mathbb{T}\) mediante la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$\mathbb{T}~X[n][m] = \{$$
+			$$\{x_{11}, x_{12}, \cdots, x_{1m}\},$$
+			$$\vdots,$$
+			$$\{x_{i1}, x_{i2}, \cdots, x_{im}\},$$
+			$$\vdots,$$
+			$$\{x_{n1}, x_{n2}, \cdots, x_{nm}\}$$
+			$$\};$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Inicialización en Python</h2>
+
+		<p>
+			En el caso de Python podemos expresar la matriz
+		</p>
+
+		<p>
+			$$
+			X = \begin{bmatrix}
+			1 & 3 \\
+			9 & 11 \\
+			6 & -2 \\
+			\end{bmatrix}
+			$$
+		</p>
+			
+		<p class="fragment">
+			como \(X = [[1, 3], [9, 11], [6, -2]]\)
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Inicialización en Python</h2>
+
+		<p>
+			Así, para inicializar una matriz \(X\) podemos utilizar la instrucción.
+		</p>
+
+		<p class="fragment">
+			$$X = [$$
+			$$[x_{11}, x_{12}, \cdots, x_{1m}],$$
+			$$\vdots,$$
+			$$[x_{i1}, x_{i2}, \cdots, x_{im}],$$
+			$$\vdots,$$
+			$$[x_{n1}, x_{n2}, \cdots, x_{nm}]$$
+			$$]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Componentes</h2>
+
+		<ul>
+			<li>
+				En la gran mayoria de los lenguajes de programación la primera componente de una matriz está ubicada en la posición \(0, 0\).
+			</li>
+			<li class="fragment">
+				Por lo tanto, para una matriz de tamaño \(n \times m\) se tiene que la última componente de la matriz estará ubicada en la posición \(n − 1, m - 1\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Componentes</h2>
+
+		<p>
+			A partir de lo anterior se tiene que dada una matriz \(x \in \mathbb{T}^{**}\), para acceder a la variable almacenada en la componente \(i, j\) se utiliza la equivalencia:
+		</p>
+
+		<p class="fragment">
+			$$x_{ij} \equiv x[i - 1][j - 1]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Mulltidimensionales: Componentes</h2>
+
+		<ul>
+			<li>
+				Una excepción a lo anterior es el lenguaje MatLab, para el cual la primera componente de la matriz está ubicada en la posición \(1, 1\).
+			</li>
+			<li class="fragment">
+				Por lo tanto,  para una matriz de tamaño \(n \times m\) se tiene que la última componente del arreglo estará ubicada en la posición \(n, m\).
+			</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Componentes</h2>
+
+		<p>
+			Es decir, para acceder en MatLab a la variable almacenada en la componente \(i, j\) se utiliza la equivalencia:
+		</p>
+
+		<p class="fragment">
+			$$x_{ij} \equiv x[i][j]$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Consideración en C++</h2>
+
+		<p>
+			Al igual que con las variables, al crear una matriz mediante la forma \(\mathbb{T}**~X = new \mathbb{T}*[n];\) \(for(int~i = 0; i < n; i++)\) \(X[i] = new \mathbb{T}[m];\) el espacio en memoria contiene basura.
+		</p>
+
+		<p class="fragment">
+			Por lo tanto, es recomendable inicializar estos valores. Lo cual se puede hacer de la siguiente manera:
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Consideración en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+	int fil = 3;
+	int col = 2;
+	
+	int** X = new int*[fil];
+	for(int i = 0; i < fil; i++)
+	    X[i] = new int[col];
+	
+	for(int i = 0; i < fil; i++)
+	{
+	    for(int j = 0; j < col; j++)
+	    {
+	        X[i][j] = 0;
+	    }
+	}
+
+	return 0;
+}
+```
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			Dado un sistema de ecuaciones de dos ecuaciones con dos incógnitas
+		</p>
+
+		<p>
+			$$ax + by = c$$
+			$$dx + ey = f$$
+		</p>
+
+		<p class="fragment">
+			este sistema de ecuaciones se puede expresar mediante matrices de la siguiente manera:
+		</p>
+
+		<p class="fragment">
+			$$
+			\begin{bmatrix}
+			a & b \\
+			d & e \\
+			\end{bmatrix}
+			\begin{bmatrix}
+			x \\
+			y \\
+			\end{bmatrix}
+			=
+			\begin{bmatrix}
+			c \\
+			f \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			una solución del sistema es una pareja \((x_0, y_0)\) tal que:
+		</p>
+
+		<p>
+			\(ax_0 + by_0 = c\) y \(dx_0 + ey_0 = f\)
+		</p>
+
+		<p class="fragment">
+			El sistema tiene una solución única si la expresión \(a * e − d ∗ b = 0\).
+		</p>
+
+		<p class="fragment">
+			A la anterior expresión se le conoce como el determinante de la matriz, y efectivamente sirve para determinar si un sistema tiene una única solución, si no tiene o si no es única.
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			A continuación se presenta una función que permite calcular el determinante de una matriz \(2 \times 2\).
+		</p>
+
+		<p class="fragment">
+			$$determinante : \mathbb{Z}^{2 \times 2} \rightarrow \mathbb{Z}$$
+			$$(X) \rightarrow X_{11} * X_{22} - X_{21} * X_{12}$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Ejemplo en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+float determinante(int X[2][2])
+{
+	return X[0][0] * X[1][1] - X[0][1] * X[1][0];
+}
+
+int main()
+{
+	int y = 0;
+	int X[2][2] = {
+	    {1, 1},
+	    {1, 1}
+	};
+	y = determinante(X);
+	
+	cout << "El determinante de la matriz" << endl;
+	for(int i = 0; i < 2; i++)
+	{
+	    for(int j = 0; j < 2; j++)
+	    {
+	        cout << X[i][j];
+	    }
+	    cout << endl;
+	}
+	cout << "es: " << y << endl;
+
+	return 0;
+}
+```
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Ejemplo en Python
+
+```python
+def determinante(X):
+	return X[0][0] * X[1][1] - X[0][1] * X[1][0]
+
+y = 0
+X = [[1, 1], [1, 1]]
+y = determinante(X);
+print("El determinante de la matriz")
+print(X)
+print("es: " + str(y))
+```
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			Una de los operaciones básicas sobre las matrices es el producto escalar. En éste se elige un valor sobre un conjunto (por ejemplo los reales \(\mathbb{R}\)) y se multiplica este valor por cada componente de la matriz.
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			Así, si \(\alpha \in \mathbb{R}\) y
+		</p>
+
+		<p class="fragment">
+			$$
+			X = \begin{bmatrix}
+			x_{11} & x_{12} & \cdots & x_{1m} \\
+			x_{21} & x_{22} & \cdots & x_{2m} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			x_{n1} & x_{n2} & \cdots & x_{nm} \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			entonces
+		</p>
+
+		<p class="fragment">
+			$$Y = \alpha * X$$
+		</p>
+
+		<p class="fragment">
+			$$
+			Y = \alpha * \begin{bmatrix}
+			x_{11} & x_{12} & \cdots & x_{1m} \\
+			x_{21} & x_{22} & \cdots & x_{2m} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			x_{n1} & x_{n2} & \cdots & x_{nm} \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			$$
+			Y = \begin{bmatrix}
+			\alpha * x_{11} & \alpha * x_{12} & \cdots & \alpha * x_{1m} \\
+			\alpha * x_{21} & \alpha * x_{22} & \cdots & \alpha * x_{2m} \\
+			\vdots & \vdots & \ddots & \vdots \\
+			\alpha * x_{n1} & \alpha * x_{n2} & \cdots & \alpha * x_{nm} \\
+			\end{bmatrix}
+			$$
+		</p>
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			La definición de esta función sería formalmente
+		</p>
+
+		<p class="fragment">
+			$$productoEscalar : \mathbb{R} \times \mathbb{R}^{**} \rightarrow \mathbb{R}^{**}$$
+			$$(a, X) \rightarrow Y$$
+		</p>
+
+		<p class="fragment">
+			donde, \(Y_{ij} = \alpha * X_{ij}\)
+			<br>
+			$$\forall_i = 1, 2, \dots, n$$
+			$$\forall_j = 1, 2, \dots, m$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Ejemplo en Python
+
+```python
+def productoEscalar(a, X):
+	n = len(X)
+	m = len(X[0])
+	Y = [[0] * m for i in range(n)]
+	for i in range(n):
+	    for j in range(m):
+	        Y[i][j] = a * X[i][j]
+	return Y
+
+n = 3
+m = 3
+X = [[0] * m for i in range(n)]
+
+a = float(input("Ingrese el alfa: \t"))
+for i in range(n):
+    for j in range(m):
+        X[i][j] = float(input("Ingrese el componente de la " +
+            "posición (" + str(i) + ", " + str(j) + "): \t"))
+
+Y = productoEscalar(a, X);
+
+print("El producto escalar es: ")
+print(Y)
+```
+	</section>
+
+	<section>
+		<h2>Arreglos Multidimensionales: Ejemplo</h2>
+
+		<p>
+			En el caso de C++ deberemos pasar como argumento las dimensiones de la matriz, así:
+		</p>
+
+		<p class="fragment">
+			$$productoEscalar : \mathbb{R} \times \mathbb{R}^{**} \times \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{R}^{**}$$
+			$$(a, X, n, m) \rightarrow Y$$
+		</p>
+	</section>
+
+	<section data-markdown>
+		## Arreglos Multidimensionales: Ejemplo en C++
+
+```cpp
+#include &lt;iostream&gt;
+
+using namespace std;
+
+float** productoEscalar(float a, float** X, int n, int m)
+{
+	float** Y = new float*[n];
+	for(int i = 0; i < n; i++)
+	    Y[i] = new float[m];
+
+	for(int i = 0; i < n; i++)
+	{
+	    for(int j = 0; j < m; j++)
+	    {
+	        Y[i][j] = a * X[i][j];
+	    }
+	}
+	return Y;
+}
+
+int main()
+{
+	int n = 3;
+	int m = 3;
+	float** X = new float*[n];
+	for(int i = 0; i < n; i++)
+	    X[i] = new float[m];
+	float a = 0;
+	float** Y = NULL;
+
+	cout << "Ingrese el alfa: \t";
+	cin >> a;
+	
+	for(int i = 0; i < n; i++)
+	{
+	    for(int j = 0; j < m; j++)
+	    {
+	        cout << "Ingrese el componente de la posición (";
+	        cout << i << ", " << j << "): \t";
+	        cin >> X[i][j];
+	    }
+	}
+
+	Y = productoEscalar(a, X, n, m);
+	
+	cout << "El producto escalar es: " << endl;
+	for(int i = 0; i < n; i++)
+	{
+	    for(int j = 0; j < m; j++)
+	    {
+	        cout << Y[i][j];
+	    }
+	    cout << endl;
+	}
+
+	return 0;
+}
+```
+	</section>
+</section>
